@@ -2,20 +2,24 @@
 $(document).ready(function() {
 
     $(".img-responsive").on("click", function () {
+
         var targetNumber;
 
       //  var random = Math.floor(Math.random)() * 10 + 1;
-       var random = Math.floor(Math.random() * 20) + 1;
-
-        console.log("is this random " + random);
+       var random = Math.floor(Math.random() * 40) + 1;
+            targetNumber = random;
+        console.log("is this random " + targetNumber);
 
     });
 });
 
-
-
+///create four random numbers
+for (var i = 0; i < 4; i++)
+ var numberOptions = math.floor(math.random() * 10) + 1;
+//down below is where we push those four random numbers into an array
 ////pseudo code \\\\
 ///creating the crystals on the screen
+
 
 var numberOptions = [a random number, similar to the tloterry generator ]
 
@@ -41,7 +45,6 @@ for (var i = 0; i < numberOptions.length; i++) {
 
 
 })
-
 
 
 
