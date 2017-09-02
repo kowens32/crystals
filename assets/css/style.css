@@ -3,6 +3,10 @@
     width: 100px;
 }
 
-.test, .counter, .targetNumber {
+.test, .counter, .targetNumber, .wins {
     border: pink solid;
+}
+
+.h1 {
+    font-weight: bold;
 }

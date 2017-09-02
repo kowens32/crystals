@@ -1,74 +1,64 @@
 
 $(document).ready(function() {
-
-   // function newGame () {
-var counter = 0;
-        var targetNumber;
-
-      //  var random = Math.floor(Math.random)() * 10 + 1;
-       var random = Math.floor(Math.random() * 40) + 10;
-            targetNumber = random;
+    //Setting universal variables
+    var counter = [0];
+    var wins = 1;
+    var targetNumber;
+//function newGame generates the target number to beat
+    function newGame () {
+        var random = Math.floor(Math.random() * 40) + 10;
+        targetNumber = random;
         console.log("is this random " + targetNumber);
-       $(".test").text(targetNumber);
-   // };
-
-///create four random numbers
-
-var numberOptions = [];
-for (var i = 0; i < 4; i++) {
-    var randomNumbers = Math.floor(Math.random() * 10) + 1;
-
-numberOptions = randomNumbers + numberOptions;
-
-console.log("i need four numbers "+ numberOptions);
-
-}
-//down below is where we push those four random numbers into an array
-////pseudo code \\\\
-///creating the crystals on the screen
-
-
-//var numberOptions = [a random number, similar to the tloterry generator ]
-
-for (var i = 0; i < numberOptions.length; i++) {
-
-    var imageCrystal = $("<img>");
-
-    imageCrystal.addClass("crystal-image");
-
-
-    imageCrystal.attr("src", "http://www.crystalclearintentions.co.nz/wp-content/uploads/crystals.jpg");
-    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
-    console.log(numberOptions);
-
-    $(".test").append(imageCrystal);
-}
-
-    $(".crystal-image").on("click", function (){
-
-        var crystalValue = ($(this).attr("data-crystalValue"));
-   crystalValue = parseInt(crystalValue);
-console.log("what is my "+crystalValue);
-
-     counter += crystalValue;
-        $(".counter").text(counter);
-
-console.log("counter "+counter);
-
-
-        if (counter === targetNumber) {
-            alert("You win!");
+        $(".targetNumber").html(targetNumber);
+///function newGame create four random numbers for me to assign to the crystals
+        var numberOptions = [];
+        for (var i = 0; i < 4; i++) {
+            var randomNumbers = Math.floor(Math.random() * 10) + 1;
+            numberOptions = randomNumbers + numberOptions;
+            console.log("i need four numbers " + numberOptions);
         }
+//create my for loop to assign the crystals the four random numbers I just created
+        //create new crystal images to appear in the DOM so numbers are random every time
+        for (var i = 0; i < numberOptions.length; i++) {
+            var imageCrystal = $("<img>");
+            imageCrystal.addClass("crystal-image");
+//add the proper source attribute
+            imageCrystal.attr("src", "http://www.crystalclearintentions.co.nz/wp-content/uploads/crystals.jpg");
+            //assign the value that is equal to the numberOptions array value
+            imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+            console.log(numberOptions);
+//append image to the container
+            $(".test").append(imageCrystal);
+        }
+    }
+    //call my function
+    newGame();
+    //run function once user clicks on crystal
+    $(".crystal-image").on("click", function (){
+//assigns crystal value according to the user click
+        var crystalValue = ($(this).attr("data-crystalValue"));
+        //must be converted to integers
+        crystalValue = parseInt(crystalValue);
+        console.log("what is my "+crystalValue);
+//keep track of the value of each user click
+        counter += crystalValue;
+        counter = parseInt(counter);
+        $(".counter").html(counter);
+        console.log("counter "+counter);
+//How to calculate wins
+        if (counter === targetNumber) {
+            alert("You win!") && wins++;
+            $(".test").empty();
+            $(".counter").empty();
+            newGame();
+            $(".wins").text(wins);
+        }
+        //how to calculate loses
         else if (counter >= targetNumber) {
             alert("You lose!!");
+            $(".test").empty();
+            $(".counter").empty();
+            newGame();
         }
-
-})
-
-
-
-    // newGame();
-
-
-
+    })
 });
