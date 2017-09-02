@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    $(".img-responsive").on("click", function () {
+   function newGame () {
 
         var targetNumber;
 
@@ -10,18 +10,23 @@ $(document).ready(function() {
             targetNumber = random;
         console.log("is this random " + targetNumber);
 
-    });
+    };
 });
 
 ///create four random numbers
-for (var i = 0; i < 4; i++)
- var numberOptions = math.floor(math.random() * 10) + 1;
+
+var numberOptions = "";
+for (var i = 0; i < 4; i++) {
+    var randomNumbers = math.floor(math.random() * 10) + 1;
+
+numberOptions = randomNumbers + numberOptions;
+}
 //down below is where we push those four random numbers into an array
 ////pseudo code \\\\
 ///creating the crystals on the screen
 
 
-var numberOptions = [a random number, similar to the tloterry generator ]
+//var numberOptions = [a random number, similar to the tloterry generator ]
 
 for (var i = 0; i < numberOptions.length; i++) {
 
